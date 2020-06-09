@@ -14,24 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path as url
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from todo_team_fury import settings
 from rest_framework_swagger.views import get_swagger_view
-from django.contrib.auth import views as auth_views
 #==================================
 #DJANGO ADMIN custom
 #==================================
 admin.site.site_header = "Team Fury To-Do"
 admin.site.site_title = "Team Fury To-Do App Portal"
-admin.site.index_title = "Welcome to Team Fury Staff Portal"
+admin.site.index_title = "Welcome to Team Fury To-Do App Portal"
 
 schema_view = get_swagger_view(title='Team-Fury Api Documentation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # This will take you to the different endpoints in tasks
+    path('tasks/', include('tasks.urls')),
+
     # This will show you all the available endpoint in this project
     path('', schema_view),
 ]
+
