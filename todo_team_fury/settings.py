@@ -40,13 +40,21 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
 
-    'tasks',
+    # 'tasks',
+    'django_filters',
+    'task',
+    'account',
+    
 ]
 
 REST_FRAMEWORK = {
 
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
 
     # Used to ensure Swagger which generates the API docs work with coreapi
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
