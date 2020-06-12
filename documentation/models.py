@@ -3,12 +3,14 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 # Create your models here.
 
-class Documentation(models.Model):
+class Endpoint(models.Model):
     
-    path_name = models.CharField(max_length=500)
-    action_name = models.CharField(max_length=500)
-    route= models.CharField(max_length=500)
-    curl= models.CharField(max_length=500)
+    endpoint_name = models.CharField(max_length=100)
+    route= models.CharField(max_length=200)
+    url_params = models.CharField(max_length=200, null=True, blank=True)
+    supported_http_actions = models.CharField(max_length=200)
+    description = models.TextField()
+
     class Meta:
         ordering = ['-id']
     

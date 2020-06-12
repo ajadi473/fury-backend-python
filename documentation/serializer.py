@@ -1,8 +1,13 @@
 from rest_framework import serializers
 from django.utils import timezone
 from django.contrib.auth.models import User
-from documentation.models import Documentation
-class DocumentationSerializer(serializers.HyperlinkedModelSerializer):
+from documentation.models import Endpoint
+
+
+class EndpointSerializer(serializers.HyperlinkedModelSerializer):
+
+    """ This serializes and serializes and Endpoint object """
+
     class Meta:
-        model = Documentation
-        fields= ('path_name','action_name','route','curl')
+        model = Endpoint
+        fields= "__all__"

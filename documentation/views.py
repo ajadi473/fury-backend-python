@@ -14,8 +14,8 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 
 # Documentation App
-from documentation.serializer import DocumentationSerializer
-from documentation.models import Documentation
+from documentation.serializer import EndpointSerializer
+from documentation.models import Endpoint
 
 # Provider OAuth2
 
@@ -29,25 +29,13 @@ from rest_framework import schemas
 
 
 
-class Documentation_view(viewsets.ModelViewSet):
-    """ This Route implements Documentation  """
-    queryset = Documentation.objects.all()
-    serializer_class = DocumentationSerializer
-    
-    def post(self, request):
-        """ Allow registration of new users. """
-        """ Adding a new task. """
-        if request.method == 'POST':
-            serializer = DocumentationSerializer(data=request.data)
-        data= {}
-        if serializer.is_valid():
-            document = serializer.save()
-            data['pathname'] = "Successfully registered a new user."
-            data['action_name']=document.action_name
-            data['route']=document.route
-        else:
-            data=serializer.errors
-        return Response(data)
+class Endpoint_view(viewsets.ModelViewSet):
+   
+    """ This route provides crud endpoints for documenting our API """
 
+    queryset = Endpoint.objects.all()
+    serializer_class = EndpointSerializer
+    
+    
 
 
