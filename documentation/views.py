@@ -31,7 +31,8 @@ from rest_framework import schemas
 
 class Endpoint_view(viewsets.ModelViewSet):
    
-    """ This route provides crud endpoints for documenting our API """
+    """ This endpoint returns a list of all the endpoints and their related data.
+    This endpoint also allows authenticated users to add documentation for a new endpoints"""
 
     queryset = Endpoint.objects.all()
     serializer_class = EndpointSerializer

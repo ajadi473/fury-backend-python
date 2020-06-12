@@ -10,4 +10,4 @@ class EndpointSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Endpoint
-        fields= "__all__"
+        fields= ["route", "endpoint_name", "content_type", "url_params", "supported_http_actions", "description"]
