@@ -32,18 +32,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # This will take you to the different endpoints in tasks
-    # path('tasks/', include('tasks.urls')),
-
+    path('v1/task/', include('task.urls')),
+    #this is for account registration
+    path('v1/register/', include('account.urls')),
+    path('v1/documentation/',include('documentation.urls')),
     # This will show you all the available endpoint in this project
     path('', schema_view),
-    # This will take you to the different endpoints in tasks
-    
-    path('task/', include('task.urls')),
-    #this is for account registration
-    
-    path('register/', include('account.urls')),
-    # This will show you all the available endpoint in this project
-
-    # path('user/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+   
+    # more
 ]
+
 
